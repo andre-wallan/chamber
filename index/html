@@ -45,7 +45,7 @@
         <p><strong>Category:</strong> Coffee Shop</p>
         <p><strong>Address:</strong> 12 Main Street, Kabale</p>
         <p><strong>Phone:</strong> +256 712 345 678</p>
-        <p><strong>Website:</strong> <a href="https://greenhillscoffe.ug" target="_blank">greenhillscoffee.ug</a></p>
+        <p><strong>Website:</strong> <a href="https://greenhillscoffe.ug" target="_blank">greenhillscoffe.ug</a></p>
       </article>
 
       <article class="business-card">
@@ -53,7 +53,8 @@
         <p><strong>Category:</strong> IT Services</p>
         <p><strong>Address:</strong> 8 Tech Park, Kabale</p>
         <p><strong>Phone:</strong> +256 702 112 233</p>
-        <p><strong>Website:</strong> <a href="https://rwenzoritec.ug" target="_blank">rwenzoritech.ug</a></p>
+        <p><strong>Website:</strong> <a href="https://rwenzoritec.ug" target="_blank">rwenzoritech
+      .ug</a></p>
       </article>
 
       <!-- More member entries can be added here -->

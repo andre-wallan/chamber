@@ -12,11 +12,13 @@ body {
   padding: 20px;
 }
 
-/* Header Styles */
-header {
+/* Header and Footer */
+header,
+footer {
   background-color: #003366;
   color: white;
   padding: 20px 0;
+  text-align: center;
 }
 
 header h1 {
@@ -24,6 +26,11 @@ header h1 {
   font-size: 28px;
 }
 
+footer {
+  margin-top: 40px;
+}
+
+/* Navigation */
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -36,14 +43,14 @@ nav ul li {
   display: inline;
 }
 
-nav ul li a {
+nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
 
-nav ul li a.active,
-nav ul li a:hover {
+nav a.active,
+nav a:hover {
   text-decoration: underline;
 }
 
@@ -87,63 +94,3 @@ main h2 {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
-/* Footer */
-footer {
-  background-color: #003366;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 40px;
-}
-
-  body {
-    font-family: Arial, sans-serif;
-  }
-
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  header, footer {
-    background-color: #003366;
-    color: white;
-    padding: 20px 0;
-  }
-
-  nav ul {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-  }
-
-  nav a {
-    color: white;
-    text-decoration: none;
-  }
-
-  nav a.active {
-    text-decoration: underline;
-  }
-
-  .business-card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-
-  .search-bar {
-    margin: 20px;
-    text-align: center;
-  }
-
-  .search-bar input {
-    width: 60%;
-    padding: 10px;
-    font-size: 16px;
-  }
