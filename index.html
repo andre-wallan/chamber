@@ -21,6 +21,7 @@
     .members.grid .business-card { width: 300px; }
     .members.list .business-card { width: 100%; }
     .view-toggle { margin: 1rem 0; }
+    .business-card img { max-width: 100%; height: 80px; object-fit: contain; margin-bottom: 0.5rem; }
   </style>
 </head>
 <body>
@@ -68,83 +69,94 @@
         category: "Coffee Shop",
         address: "12 Main Street, Kabale",
         phone: "+256 712 345 678",
-        website: "https://greenhillscoffe.ug"
+        website: "https://greenhillscoffe.ug",
+        image: "",
+        membership: 1,
+        info: ""
       },
       {
         name: "Rwenzori Tech Solutions",
         category: "IT Services",
         address: "8 Tech Park, Kabale",
         phone: "+256 702 112 233",
-        website: "https://rwenzoritec.ug"
+        website: "https://rwenzoritec.ug",
+        image: "",
+        membership: 1,
+        info: ""
+      },
+      {
+        name: "TechNova Ltd",
+        category: "Software Company",
+        address: "Plot 45, Kampala Road, Uganda",
+        phone: "+256 701 123456",
+        website: "https://www.technova.ug",
+        image: "technova.png",
+        membership: 3,
+        info: "Leading software company specializing in fintech solutions."
+      },
+      {
+        name: "Green Harvest",
+        category: "Agriculture",
+        address: "Mbale, Eastern Uganda",
+        phone: "+256 712 334455",
+        website: "https://greenharvest.ug",
+        image: "greenharvest.png",
+        membership: 2,
+        info: "Organic farming and agricultural consultancy."
+      },
+      {
+        name: "Safari Wheels",
+        category: "Tourism",
+        address: "Entebbe Highway, Uganda",
+        phone: "+256 755 987654",
+        website: "https://safariwheels.ug",
+        image: "safariwheels.png",
+        membership: 1,
+        info: "Tour company offering guided safaris."
+      },
+      {
+        name: "EduSmart",
+        category: "Education",
+        address: "Kira Road, Kampala",
+        phone: "+256 770 554433",
+        website: "https://edusmart.ug",
+        image: "edusmart.png",
+        membership: 3,
+        info: "E-learning solutions for schools and universities."
+      },
+      {
+        name: "ByteFix",
+        category: "IT Services",
+        address: "Industrial Area, Kampala",
+        phone: "+256 786 112233",
+        website: "https://bytefix.ug",
+        image: "bytefix.png",
+        membership: 1,
+        info: "Computer repair and IT maintenance services."
+      },
+      {
+        name: "Urban Foods",
+        category: "Restaurant",
+        address: "Gulu City, Uganda",
+        phone: "+256 758 667788",
+        website: "https://urbanfoods.ug",
+        image: "urbanfoods.png",
+        membership: 2,
+        info: "Fast food restaurant with local cuisine focus."
+      },
+      {
+        name: "SolarBright",
+        category: "Renewable Energy",
+        address: "Jinja Road, Uganda",
+        phone: "+256 701 998877",
+        website: "https://solarbright.ug",
+        image: "solarbright.png",
+        membership: 3,
+        info: "Renewable energy company specializing in solar panels."
       }
-      
     ];
 
-    let currentView = 'grid';[
-  {
-    "name": "TechNova Ltd",
-    "address": "Plot 45, Kampala Road, Uganda",
-    "phone": "+256 701 123456",
-    "website": "https://www.technova.ug",
-    "image": "technova.png",
-    "membership": 3,
-    "info": "Leading software company specializing in fintech solutions."
-  },
-  {
-    "name": "Green Harvest",
-    "address": "Mbale, Eastern Uganda",
-    "phone": "+256 712 334455",
-    "website": "https://greenharvest.ug",
-    "image": "greenharvest.png",
-    "membership": 2,
-    "info": "Organic farming and agricultural consultancy."
-  },
-  {
-    "name": "Safari Wheels",
-    "address": "Entebbe Highway, Uganda",
-    "phone": "+256 755 987654",
-    "website": "https://safariwheels.ug",
-    "image": "safariwheels.png",
-    "membership": 1,
-    "info": "Tour company offering guided safaris."
-  },
-  {
-    "name": "EduSmart",
-    "address": "Kira Road, Kampala",
-    "phone": "+256 770 554433",
-    "website": "https://edusmart.ug",
-    "image": "edusmart.png",
-    "membership": 3,
-    "info": "E-learning solutions for schools and universities."
-  },
-  {
-    "name": "ByteFix",
-    "address": "Industrial Area, Kampala",
-    "phone": "+256 786 112233",
-    "website": "https://bytefix.ug",
-    "image": "bytefix.png",
-    "membership": 1,
-    "info": "Computer repair and IT maintenance services."
-  },
-  {
-    "name": "Urban Foods",
-    "address": "Gulu City, Uganda",
-    "phone": "+256 758 667788",
-    "website": "https://urbanfoods.ug",
-    "image": "urbanfoods.png",
-    "membership": 2,
-    "info": "Fast food restaurant with local cuisine focus."
-  },
-  {
-    "name": "SolarBright",
-    "address": "Jinja Road, Uganda",
-    "phone": "+256 701 998877",
-    "website": "https://solarbright.ug",
-    "image": "solarbright.png",
-    "membership": 3,
-    "info": "Renewable energy company specializing in solar panels."
-  }
-]
+    let currentView = 'grid';
 
     function setView(view) {
       currentView = view;
@@ -159,17 +171,19 @@
       membersData
         .filter(m =>
           m.name.toLowerCase().includes(search) ||
-          m.category.toLowerCase().includes(search)
+          (m.category && m.category.toLowerCase().includes(search))
         )
         .forEach(member => {
           const card = document.createElement('article');
           card.className = 'business-card';
           card.innerHTML = `
+            ${member.image ? `<img src="images/${member.image}" alt="${member.name} Logo">` : ''}
             <h3>${member.name}</h3>
-            <p><strong>Category:</strong> ${member.category}</p>
+            <p><strong>Category:</strong> ${member.category || 'N/A'}</p>
             <p><strong>Address:</strong> ${member.address}</p>
             <p><strong>Phone:</strong> ${member.phone}</p>
             <p><strong>Website:</strong> <a href="${member.website}" target="_blank">${member.website.replace(/^https?:\/\//, '')}</a></p>
+            ${member.info ? `<p>${member.info}</p>` : ''}
           `;
           membersDiv.appendChild(card);
         });
