@@ -5,7 +5,7 @@ const membersData = [
     "address": "Plot 45, Kampala Road, Uganda",
     "phone": "+256 701 123456",
     "website": "https://www.technova.ug",
-    "image": "technova.png",
+    "image": "technova.jpg",
     "membership": 3,
     "info": "Leading software company specializing in fintech solutions."
   },
@@ -14,7 +14,7 @@ const membersData = [
     "address": "Mbale, Eastern Uganda",
     "phone": "+256 712 334455",
     "website": "https://greenharvest.ug",
-    "image": "greenharvest.png",
+    "image": "greenharvest.jpg",
     "membership": 2,
     "info": "Organic farming and agricultural consultancy."
   },
@@ -23,7 +23,7 @@ const membersData = [
     "address": "Entebbe Highway, Uganda",
     "phone": "+256 755 987654",
     "website": "https://safariwheels.ug",
-    "image": "safariwheels.png",
+    "image": "safariwheels.jpg",
     "membership": 1,
     "info": "Tour company offering guided safaris."
   },
@@ -32,7 +32,7 @@ const membersData = [
     "address": "Kira Road, Kampala",
     "phone": "+256 770 554433",
     "website": "https://edusmart.ug",
-    "image": "edusmart.png",
+    "image": "edusmart.jpg",
     "membership": 3,
     "info": "E-learning solutions for schools and universities."
   },
@@ -41,7 +41,7 @@ const membersData = [
     "address": "Industrial Area, Kampala",
     "phone": "+256 786 112233",
     "website": "https://bytefix.ug",
-    "image": "bytefix.png",
+    "image": "bytefix.jpg",
     "membership": 1,
     "info": "Computer repair and IT maintenance services."
   },
@@ -50,7 +50,7 @@ const membersData = [
     "address": "Gulu City, Uganda",
     "phone": "+256 758 667788",
     "website": "https://urbanfoods.ug",
-    "image": "urbanfoods.png",
+    "image": "urbanfoods.jpg",
     "membership": 2,
     "info": "Fast food restaurant with local cuisine focus."
   },
@@ -59,7 +59,7 @@ const membersData = [
     "address": "Jinja Road, Uganda",
     "phone": "+256 701 998877",
     "website": "https://solarbright.ug",
-    "image": "solarbright.png",
+    "image": "solarbright.jpg",
     "membership": 3,
     "info": "Renewable energy company specializing in solar panels."
   }
