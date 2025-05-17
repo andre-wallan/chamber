@@ -3,7 +3,54 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f4f4f4;body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.view-toggle {
+  margin-bottom: 20px;
+}
+
+#members.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+#members.list {
+  display: block;
+}
+
+.member {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.member img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.member h3 {
+  margin: 0;
+}
+
+.member a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+.member p {
+  margin: 4px 0;
+}
+
 }
 
 .container {
