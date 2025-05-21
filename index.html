@@ -3,260 +3,166 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover local businesses and organizations in the Kabale Chamber of Commerce Directory." />
+  <meta name="description" content="Welcome to the Kabale Chamber of Commerce. Discover local businesses, upcoming events, and join our thriving community." />
   <meta name="author" content="Kabale Chamber Web Team" />
-  <title>Directory | Kabale Chamber of Commerce</title>
+  <title>Kabale Chamber of Commerce | Home</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="styles.css" />
   <!-- Facebook Open Graph Meta Tags -->
-  <meta property="og:title" content="Kabale Chamber Directory" />
-  <meta property="og:description" content="Find trusted local businesses and organizations in the Kabale region through our official Chamber of Commerce Directory." />
+  <meta property="og:title" content="Kabale Chamber of Commerce" />
+  <meta property="og:description" content="Connect with local businesses and discover opportunities in Kabale." />
   <meta property="og:image" content="https://yourdomain.com/chamber/images/og-image.jpg" />
-  <meta property="og:url" content="https://yourdomain.com/chamber/directory.html" />
+  <meta property="og:url" content="https://yourdomain.com/chamber/index.html" />
   <meta property="og:type" content="website" />
   <style>
-    :root {
-      --primary: #1a4d2e;
-      --accent: #f7c873;
-      --bg: #f7f7f7;
-      --card-bg: #fff;
-      --border: #e0e0e0;
-      --text: #222;
-      --nav-bg: #fff;
-      --nav-active: var(--accent);
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', Arial, sans-serif;
-      min-height: 100%;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    header {
-      background: var(--nav-bg);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-wrapper {
+    /* Use your existing CSS from directory.html */
+    /* Add or adjust styles for hero, weather, events, spotlights as needed */
+    .hero {
+      background: url('images/hero.jpg') center/cover no-repeat;
+      min-height: 320px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 0.5rem 0;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      color: var(--primary);
-      margin: 0;
-      letter-spacing: 1px;
-    }
-    nav {
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      border-radius: 0 0 16px 16px;
+      margin-bottom: 2rem;
       position: relative;
     }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
+    .hero-content {
+      background: rgba(26,77,46,0.7);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 500px;
     }
-    nav a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 500;
-      padding: 0.5rem 0.75rem;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
+    .hero-content h2 {
+      color: #f7c873;
+      margin-bottom: 0.7rem;
     }
-    nav a.active, nav a:focus, nav a:hover {
-      background: var(--nav-active);
-      color: #222;
-    }
-    /* Hamburger */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: var(--primary);
-      cursor: pointer;
-    }
-    /* Responsive nav */
-    @media (max-width: 800px) {
-      .nav-wrapper {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 0;
-        display: none;
-        background: var(--nav-bg);
-        border-radius: 0 0 8px 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        margin-top: 0.5rem;
-      }
-      nav ul.open {
-        display: flex;
-      }
-      .nav-toggle {
-        display: block;
-        align-self: flex-end;
-      }
-    }
-    main.container {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-    }
-    h1, h2 {
-      margin-top: 0;
-      color: var(--primary);
-      letter-spacing: 1px;
-    }
-    .view-toggle {
-      display: flex;
-      gap: 1rem;
-      margin: 1.5rem 0 1rem 0;
-      align-items: center;
-    }
-    .view-toggle button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
-      outline: none;
-    }
-    .view-toggle button.active, .view-toggle button:focus {
+    .cta-btn {
+      display: inline-block;
       background: var(--accent);
       color: #222;
+      font-weight: bold;
+      padding: 0.7rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 1.2rem;
+      font-size: 1.1rem;
+      transition: background 0.2s;
     }
-    .search-bar {
-      margin-bottom: 1.5rem;
+    .cta-btn:hover, .cta-btn:focus {
+      background: #ffe2a8;
+      color: var(--primary);
+    }
+    .main-sections {
       display: flex;
+      gap: 2rem;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: center;
+      margin-bottom: 2rem;
     }
-    .search-bar label {
-      font-weight: 500;
-      margin-right: 0.5rem;
-    }
-    .search-bar input {
-      flex: 1 1 220px;
-      padding: 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-size: 1rem;
-      background: #fff;
-    }
-    .members.grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: flex-start;
-    }
-    .members.list {
-      display: block;
-    }
-    .business-card {
+    .main-sections > section {
+      flex: 1 1 320px;
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.2rem 1rem;
-      margin-bottom: 1.5rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      transition: box-shadow 0.2s;
+      min-width: 0;
+    }
+    .weather-today {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .weather-today img {
+      width: 48px;
+      height: 48px;
+    }
+    .forecast {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+    .forecast-day {
+      text-align: center;
+      flex: 1 1 0;
+      background: #f7f7f7;
+      border-radius: 6px;
+      padding: 0.5rem 0.2rem;
+    }
+    .spotlights {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      justify-content: flex-start;
+    }
+    .spotlight-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 0.8rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      width: 300px;
+      min-width: 200px;
+      max-width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      min-width: 0;
       word-break: break-word;
     }
-    .members.grid .business-card {
-      width: 320px;
-      min-width: 220px;
+    .spotlight-card img {
       max-width: 100%;
-      align-items: flex-start;
-    }
-    .members.list .business-card {
-      width: 100%;
-      flex-direction: row;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .business-card img {
-      max-width: 100%;
-      height: 80px;
+      height: 70px;
       object-fit: contain;
       margin-bottom: 0.7rem;
       border-radius: 4px;
       background: #f5f5f5;
       align-self: center;
     }
-    .members.list .business-card img {
-      display: none !important;
-    }
-    .business-card h3 {
+    .spotlight-card h3 {
       margin: 0 0 0.3rem 0;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--primary);
     }
-    .business-card p {
+    .spotlight-card p {
       margin: 0.15rem 0;
       font-size: 0.98rem;
       line-height: 1.5;
     }
-    .business-card a {
+    .spotlight-card a {
       color: var(--primary);
       text-decoration: underline;
       word-break: break-all;
     }
-    @media (max-width: 600px) {
-      .container, main.container {
-        padding: 0 0.5rem;
+    .spotlight-level {
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: #fff;
+      background: #bfa13a;
+      border-radius: 4px;
+      padding: 0.2rem 0.7rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .spotlight-level.silver {
+      background: #bfc1c2;
+      color: #222;
+    }
+    @media (max-width: 900px) {
+      .main-sections {
+        flex-direction: column;
+        gap: 1.2rem;
       }
-      .members.grid {
+      .spotlights {
         gap: 1rem;
       }
-      .members.grid .business-card {
+      .spotlight-card {
         width: 100%;
       }
-      .business-card {
-        padding: 1rem 0.7rem;
-      }
-      .view-toggle {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-      }
-      .search-bar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.3rem;
-      }
-    }
-    footer {
-      background: var(--nav-bg);
-      border-top: 1px solid var(--border);
-      padding: 1.2rem 0;
-      text-align: center;
-      color: #666;
-      font-size: 0.97rem;
-      margin-top: 2rem;
     }
   </style>
 </head>
@@ -269,9 +175,9 @@
       </button>
       <nav>
         <ul id="mainNav">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
           <li><a href="discover.html">Discover</a></li>
-          <li><a href="directory.html" class="active" aria-current="page">Directory</a></li>
+          <li><a href="directory.html">Directory</a></li>
           <li><a href="join.html">Join</a></li>
         </ul>
       </nav>
@@ -279,19 +185,58 @@
   </header>
 
   <main class="container">
-    <h1>Company Members</h1>
-    <div class="view-toggle" role="group" aria-label="Toggle view">
-      <button id="gridBtn" class="active" onclick="setView('grid')" aria-pressed="true">Grid View</button>
-      <button id="listBtn" onclick="setView('list')" aria-pressed="false">List View</button>
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Welcome">
+      <div class="hero-content">
+        <h2>Welcome to Kabale Chamber of Commerce</h2>
+        <p>Empowering local businesses and fostering growth in the Kabale region. Connect, discover, and thrive with us!</p>
+        <a href="join.html" class="cta-btn">Join the Chamber</a>
+      </div>
+    </section>
+
+    <div class="main-sections">
+      <!-- Events Section -->
+      <section aria-labelledby="events-title">
+        <h2 id="events-title">Upcoming Events</h2>
+        <ul>
+          <li>
+            <strong>Business Networking Breakfast</strong><br>
+            <span>June 15, 2025 &mdash; 8:00 AM</span><br>
+            <span>Kabale Resort Hotel</span>
+          </li>
+          <li>
+            <strong>Annual General Meeting</strong><br>
+            <span>July 10, 2025 &mdash; 10:00 AM</span><br>
+            <span>Chamber Conference Hall</span>
+          </li>
+          <li>
+            <strong>Entrepreneurship Workshop</strong><br>
+            <span>August 5, 2025 &mdash; 2:00 PM</span><br>
+            <span>Online (Zoom)</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Weather Section -->
+      <section aria-labelledby="weather-title">
+        <h2 id="weather-title">Kabale Weather</h2>
+        <div id="weather">
+          <div class="weather-today">
+            <img id="weather-icon" src="" alt="" style="display:none;">
+            <div>
+              <span id="weather-temp">--°C</span>
+              <span id="weather-desc"></span>
+            </div>
+          </div>
+          <div class="forecast" id="forecast"></div>
+        </div>
+      </section>
     </div>
-    <div class="search-bar">
-      <label for="directorySearch">Search Businesses:</label>
-      <input type="text" id="directorySearch" placeholder="Search by name or category..." oninput="renderMembers()" />
-    </div>
-    <section>
-      <h2>Member Directory</h2>
-      <p>Browse trusted local businesses and organizations that are proud members of the Kabale Chamber of Commerce.</p>
-      <div id="members" class="members grid" aria-live="polite"></div>
+
+    <!-- Spotlights Section -->
+    <section aria-labelledby="spotlights-title">
+      <h2 id="spotlights-title">Member Spotlights</h2>
+      <div class="spotlights" id="spotlights"></div>
     </section>
   </main>
 
@@ -315,6 +260,7 @@
       }
     });
 
+    // Chamber members data (reuse from directory)
     const membersData = [
       {
         name: "Green Hills Coffee",
@@ -408,47 +354,91 @@
       }
     ];
 
-    let currentView = 'grid';
-
-    function setView(view) {
-      currentView = view;
-      document.getElementById('members').className = 'members ' + view;
-      document.getElementById('gridBtn').classList.toggle('active', view === 'grid');
-      document.getElementById('listBtn').classList.toggle('active', view === 'list');
-      document.getElementById('gridBtn').setAttribute('aria-pressed', view === 'grid');
-      document.getElementById('listBtn').setAttribute('aria-pressed', view === 'list');
-      renderMembers();
+    // Spotlights: show 2 or 3 random gold/silver members
+    function renderSpotlights() {
+      const spotlightsDiv = document.getElementById('spotlights');
+      spotlightsDiv.innerHTML = '';
+      // Filter gold (3) and silver (2) members
+      const eligible = membersData.filter(m => m.membership === 2 || m.membership === 3);
+      // Shuffle and pick 2 or 3
+      const count = Math.floor(Math.random() * 2) + 2; // 2 or 3
+      const shuffled = eligible.sort(() => 0.5 - Math.random()).slice(0, count);
+      shuffled.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'spotlight-card';
+        card.innerHTML = `
+          <span class="spotlight-level ${member.membership === 2 ? 'silver' : ''}">
+            ${member.membership === 3 ? 'Gold Member' : 'Silver Member'}
+          </span>
+          ${member.image ? `<img src="images/${member.image}" alt="${member.name} Logo">` : ''}
+          <h3>${member.name}</h3>
+          <p><strong>Category:</strong> ${member.category || 'N/A'}</p>
+          <p><strong>Address:</strong> ${member.address}</p>
+          <p><strong>Phone:</strong> ${member.phone}</p>
+          <p><strong>Website:</strong> <a href="${member.website}" target="_blank" rel="noopener">${member.website.replace(/^https?:\/\//, '')}</a></p>
+          ${member.info ? `<p>${member.info}</p>` : ''}
+        `;
+        spotlightsDiv.appendChild(card);
+      });
     }
 
-    function renderMembers() {
-      const search = document.getElementById('directorySearch').value.toLowerCase();
-      const membersDiv = document.getElementById('members');
-      membersDiv.innerHTML = '';
-      membersData
-        .filter(m =>
-          m.name.toLowerCase().includes(search) ||
-          (m.category && m.category.toLowerCase().includes(search))
-        )
-        .forEach(member => {
-          const card = document.createElement('article');
-          card.className = 'business-card';
-          card.innerHTML = `
-            ${currentView === 'grid' && member.image ? `<img src="images/${member.image}" alt="${member.name} Logo">` : ''}
-            <div>
-              <h3>${member.name}</h3>
-              <p><strong>Category:</strong> ${member.category || 'N/A'}</p>
-              <p><strong>Address:</strong> ${member.address}</p>
-              <p><strong>Phone:</strong> ${member.phone}</p>
-              <p><strong>Website:</strong> <a href="${member.website}" target="_blank" rel="noopener">${member.website.replace(/^https?:\/\//, '')}</a></p>
-              ${member.info ? `<p>${member.info}</p>` : ''}
-            </div>
-          `;
-          membersDiv.appendChild(card);
+    // Weather Section: OpenWeatherMap API
+    // Replace with your own API key!
+    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+    const kabaleLat = -1.2486;
+    const kabaleLon = 29.9897;
+
+    function fetchWeather() {
+      // Current weather
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${kabaleLat}&lon=${kabaleLon}&appid=${apiKey}&units=metric`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('weather-temp').textContent = Math.round(data.main.temp) + '°C';
+          document.getElementById('weather-desc').textContent = data.weather[0].description;
+          const icon = data.weather[0].icon;
+          const iconImg = document.getElementById('weather-icon');
+          iconImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+          iconImg.alt = data.weather[0].description;
+          iconImg.style.display = 'inline-block';
+        });
+      // 3-day forecast
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${kabaleLat}&lon=${kabaleLon}&appid=${apiKey}&units=metric`)
+        .then(res => res.json())
+        .then(data => {
+          // Group by day
+          const forecastDiv = document.getElementById('forecast');
+          forecastDiv.innerHTML = '';
+          const days = {};
+          data.list.forEach(item => {
+            const date = new Date(item.dt_txt);
+            const day = date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+            if (!days[day]) days[day] = [];
+            days[day].push(item);
+          });
+          // Get next 3 days (skip today)
+          const today = new Date().toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+          const dayNames = Object.keys(days).filter(d => d !== today).slice(0, 3);
+          dayNames.forEach(day => {
+            // Average temp for the day
+            const temps = days[day].map(i => i.main.temp);
+            const avgTemp = Math.round(temps.reduce((a, b) => a + b, 0) / temps.length);
+            // Use icon from midday if available
+            let icon = days[day][Math.floor(days[day].length/2)].weather[0].icon;
+            let desc = days[day][Math.floor(days[day].length/2)].weather[0].description;
+            forecastDiv.innerHTML += `
+              <div class="forecast-day">
+                <div>${day}</div>
+                <img src="https://openweathermap.org/img/wn/${icon}.png" alt="${desc}" title="${desc}">
+                <div>${avgTemp}°C</div>
+              </div>
+            `;
+          });
         });
     }
 
     // Initial render
-    renderMembers();
+    renderSpotlights();
+    fetchWeather();
   </script>
 </body>
 </html>
