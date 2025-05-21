@@ -15,24 +15,263 @@
   <meta property="og:url" content="https://yourdomain.com/chamber/directory.html" />
   <meta property="og:type" content="website" />
   <style>
-    .members.grid { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .members.list { display: block; }
-    .business-card { border: 1px solid #ccc; padding: 1rem; border-radius: 6px; background: #fff; margin-bottom: 1rem; width: 300px; }
-    .members.grid .business-card { width: 300px; }
-    .members.list .business-card { width: 100%; }
-    .view-toggle { margin: 1rem 0; }
-    .business-card img { max-width: 100%; height: 80px; object-fit: contain; margin-bottom: 0.5rem; }
+    :root {
+      --primary: #1a4d2e;
+      --accent: #f7c873;
+      --bg: #f7f7f7;
+      --card-bg: #fff;
+      --border: #e0e0e0;
+      --text: #222;
+      --nav-bg: #fff;
+      --nav-active: var(--accent);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100%;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header {
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0.5rem 0;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    nav {
+      position: relative;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a.active, nav a:focus, nav a:hover {
+      background: var(--nav-active);
+      color: #222;
+    }
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+    /* Responsive nav */
+    @media (max-width: 800px) {
+      .nav-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+        display: none;
+        background: var(--nav-bg);
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        margin-top: 0.5rem;
+      }
+      nav ul.open {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+        align-self: flex-end;
+      }
+    }
+    main.container {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    h1, h2 {
+      margin-top: 0;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+    .view-toggle {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem 0;
+      align-items: center;
+    }
+    .view-toggle button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      outline: none;
+    }
+    .view-toggle button.active, .view-toggle button:focus {
+      background: var(--accent);
+      color: #222;
+    }
+    .search-bar {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .search-bar label {
+      font-weight: 500;
+      margin-right: 0.5rem;
+    }
+    .search-bar input {
+      flex: 1 1 220px;
+      padding: 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 1rem;
+      background: #fff;
+    }
+    .members.grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: flex-start;
+    }
+    .members.list {
+      display: block;
+    }
+    .business-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+      word-break: break-word;
+    }
+    .members.grid .business-card {
+      width: 320px;
+      min-width: 220px;
+      max-width: 100%;
+      align-items: flex-start;
+    }
+    .members.list .business-card {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .business-card img {
+      max-width: 100%;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 0.7rem;
+      border-radius: 4px;
+      background: #f5f5f5;
+      align-self: center;
+    }
+    .members.list .business-card img {
+      display: none !important;
+    }
+    .business-card h3 {
+      margin: 0 0 0.3rem 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .business-card p {
+      margin: 0.15rem 0;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .business-card a {
+      color: var(--primary);
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    @media (max-width: 600px) {
+      .container, main.container {
+        padding: 0 0.5rem;
+      }
+      .members.grid {
+        gap: 1rem;
+      }
+      .members.grid .business-card {
+        width: 100%;
+      }
+      .business-card {
+        padding: 1rem 0.7rem;
+      }
+      .view-toggle {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+      .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.3rem;
+      }
+    }
+    footer {
+      background: var(--nav-bg);
+      border-top: 1px solid var(--border);
+      padding: 1.2rem 0;
+      text-align: center;
+      color: #666;
+      font-size: 0.97rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container nav-wrapper">
       <h1>Kabale Chamber of Commerce</h1>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNavMenu()">
+        &#9776;
+      </button>
       <nav>
-        <ul>
+        <ul id="mainNav">
           <li><a href="index.html">Home</a></li>
           <li><a href="discover.html">Discover</a></li>
-          <li><a href="directory.html" class="active">Directory</a></li>
+          <li><a href="directory.html" class="active" aria-current="page">Directory</a></li>
           <li><a href="join.html">Join</a></li>
         </ul>
       </nav>
@@ -41,9 +280,9 @@
 
   <main class="container">
     <h1>Company Members</h1>
-    <div class="view-toggle">
-      <button onclick="setView('grid')">Grid View</button>
-      <button onclick="setView('list')">List View</button>
+    <div class="view-toggle" role="group" aria-label="Toggle view">
+      <button id="gridBtn" class="active" onclick="setView('grid')" aria-pressed="true">Grid View</button>
+      <button id="listBtn" onclick="setView('list')" aria-pressed="false">List View</button>
     </div>
     <div class="search-bar">
       <label for="directorySearch">Search Businesses:</label>
@@ -52,7 +291,7 @@
     <section>
       <h2>Member Directory</h2>
       <p>Browse trusted local businesses and organizations that are proud members of the Kabale Chamber of Commerce.</p>
-      <div id="members" class="members grid"></div>
+      <div id="members" class="members grid" aria-live="polite"></div>
     </section>
   </main>
 
@@ -63,6 +302,19 @@
   </footer>
 
   <script>
+    // Responsive nav menu toggle
+    function toggleNavMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('open');
+    }
+    // Wayfinding: highlight current nav link
+    document.querySelectorAll('nav a').forEach(link => {
+      if (link.href && window.location.href.includes(link.getAttribute('href'))) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+
     const membersData = [
       {
         name: "Green Hills Coffee",
@@ -161,6 +413,10 @@
     function setView(view) {
       currentView = view;
       document.getElementById('members').className = 'members ' + view;
+      document.getElementById('gridBtn').classList.toggle('active', view === 'grid');
+      document.getElementById('listBtn').classList.toggle('active', view === 'list');
+      document.getElementById('gridBtn').setAttribute('aria-pressed', view === 'grid');
+      document.getElementById('listBtn').setAttribute('aria-pressed', view === 'list');
       renderMembers();
     }
 
@@ -177,13 +433,15 @@
           const card = document.createElement('article');
           card.className = 'business-card';
           card.innerHTML = `
-            ${member.image ? `<img src="images/${member.image}" alt="${member.name} Logo">` : ''}
-            <h3>${member.name}</h3>
-            <p><strong>Category:</strong> ${member.category || 'N/A'}</p>
-            <p><strong>Address:</strong> ${member.address}</p>
-            <p><strong>Phone:</strong> ${member.phone}</p>
-            <p><strong>Website:</strong> <a href="${member.website}" target="_blank">${member.website.replace(/^https?:\/\//, '')}</a></p>
-            ${member.info ? `<p>${member.info}</p>` : ''}
+            ${currentView === 'grid' && member.image ? `<img src="images/${member.image}" alt="${member.name} Logo">` : ''}
+            <div>
+              <h3>${member.name}</h3>
+              <p><strong>Category:</strong> ${member.category || 'N/A'}</p>
+              <p><strong>Address:</strong> ${member.address}</p>
+              <p><strong>Phone:</strong> ${member.phone}</p>
+              <p><strong>Website:</strong> <a href="${member.website}" target="_blank" rel="noopener">${member.website.replace(/^https?:\/\//, '')}</a></p>
+              ${member.info ? `<p>${member.info}</p>` : ''}
+            </div>
           `;
           membersDiv.appendChild(card);
         });
