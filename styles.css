@@ -2,63 +2,101 @@
 .hero {
   background: linear-gradient(120deg, #f5ebe0 70%, #d2b48c 100%);
   color: #6f4e37;
-  padding: 60px 20px 40px 20px;
+  padding: 80px 24px 56px 24px;
   text-align: center;
-  border-radius: 0 0 24px 24px;
-  box-shadow: 0 4px 24px rgba(111, 78, 55, 0.08);
-  margin-bottom: 32px;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 8px 32px rgba(111, 78, 55, 0.10);
+  margin-bottom: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: rgba(160, 82, 45, 0.08);
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
+  font-size: 3rem;
+  margin-bottom: 18px;
   font-family: 'Merriweather', serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #4e342e;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Call to Action Button */
 .cta-btn {
-  background: #a0522d;
+  background: linear-gradient(90deg, #a0522d 60%, #d2b48c 100%);
   color: #fff8f0;
   border: none;
-  padding: 14px 32px;
-  border-radius: 6px;
-  font-size: 1.1rem;
+  padding: 16px 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
   font-family: 'Merriweather', serif;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  box-shadow: 0 2px 8px rgba(111, 78, 55, 0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(111, 78, 55, 0.12);
+  position: relative;
+  z-index: 1;
 }
 
 .cta-btn:hover {
   background: #6f4e37;
-  color: #d2b48c;
+  color: #fff8f0;
+  transform: translateY(-2px) scale(1.04);
 }
 
 /* Section Backgrounds */
 section {
   background: #fff8f0;
-  border-radius: 12px;
-  padding: 32px 20px;
-  margin-bottom: 32px;
-  box-shadow: 0 2px 8px rgba(111, 78, 55, 0.06);
+  border-radius: 16px;
+  padding: 40px 28px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 16px rgba(111, 78, 55, 0.08);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Responsive Typography */
 @media (max-width: 600px) {
   .hero h2 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
   .hero {
-    padding: 32px 10px 24px 10px;
+    padding: 36px 8px 20px 8px;
+    border-radius: 0 0 18px 18px;
   }
   section {
     padding: 18px 8px;
+    border-radius: 10px;
+  }
+  .cta-btn {
+    padding: 12px 18px;
+    font-size: 1rem;
   }
 }

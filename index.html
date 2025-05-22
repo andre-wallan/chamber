@@ -15,154 +15,70 @@
   <meta property="og:url" content="https://yourdomain.com/chamber/index.html" />
   <meta property="og:type" content="website" />
   <style>
-    
-    /* styles for hero, weather, events, spotlights as needed */
-    .hero {
-      background: url('images/chamber_back.jpg') center/cover no-repeat;
-      min-height: 320px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      border-radius: 0 0 16px 16px;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .hero-content {
-      background: rgba(26,77,46,0.7);
-      padding: 2rem 2.5rem;
-      border-radius: 12px;
-      text-align: center;
+    /* ...existing styles... */
+    /* Add a little style for the feedback and search */
+    .feedback-form, .search-form {
+      margin: 1.5rem 0;
+      background: #f7f7f7;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       max-width: 500px;
     }
-    .hero-content h2 {
-      color: #f7c873;
-      margin-bottom: 0.7rem;
+    .feedback-form label, .search-form label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.3rem;
     }
-    .cta-btn {
-      display: inline-block;
-      background: var(--accent);
+    .feedback-form textarea {
+      width: 100%;
+      min-height: 60px;
+      margin-bottom: 0.7rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      resize: vertical;
+    }
+    .feedback-form button, .search-form button {
+      background: var(--accent, #f7c873);
       color: #222;
       font-weight: bold;
-      padding: 0.7rem 2rem;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 1.2rem;
-      font-size: 1.1rem;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
       transition: background 0.2s;
     }
-    .cta-btn:hover, .cta-btn:focus {
+    .feedback-form button:hover, .search-form button:hover {
       background: #ffe2a8;
-      color: var(--primary);
     }
-    .main-sections {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
+    .search-form input[type="text"] {
+      width: 70%;
+      padding: 0.4rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-right: 0.5rem;
     }
-    .main-sections > section {
-      flex: 1 1 320px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.2rem 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      min-width: 0;
+    .search-results {
+      margin-top: 1rem;
     }
-    .weather-today {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .search-results .spotlight-card {
       margin-bottom: 1rem;
     }
-    .weather-today img {
-      width: 48px;
-      height: 48px;
-    }
-    .forecast {
-      display: flex;
-      gap: 1rem;
-      justify-content: space-between;
-    }
-    .forecast-day {
-      text-align: center;
-      flex: 1 1 0;
-      background: #f7f7f7;
-      border-radius: 6px;
-      padding: 0.5rem 0.2rem;
-    }
-    .spotlights {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-      justify-content: flex-start;
-    }
-    .spotlight-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 0.8rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      width: 300px;
-      min-width: 200px;
-      max-width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      word-break: break-word;
-    }
-    .spotlight-card img {
-      max-width: 100%;
-      height: 70px;
-      object-fit: contain;
-      margin-bottom: 0.7rem;
-      border-radius: 4px;
-      background: #f5f5f5;
-      align-self: center;
-    }
-    .spotlight-card h3 {
-      margin: 0 0 0.3rem 0;
-      font-size: 1.1rem;
-      color: var(--primary);
-    }
-    .spotlight-card p {
-      margin: 0.15rem 0;
-      font-size: 0.98rem;
-      line-height: 1.5;
-    }
-    .spotlight-card a {
-      color: var(--primary);
-      text-decoration: underline;
-      word-break: break-all;
-    }
-    .spotlight-level {
-      font-size: 0.95rem;
-      font-weight: bold;
-      color: #fff;
-      background: #bfa13a;
-      border-radius: 4px;
-      padding: 0.2rem 0.7rem;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-    .spotlight-level.silver {
+    .refresh-spotlights-btn {
+      margin-top: 0.7rem;
       background: #bfc1c2;
       color: #222;
+      border: none;
+      border-radius: 4px;
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+      font-size: 0.98rem;
+      transition: background 0.2s;
     }
-    @media (max-width: 900px) {
-      .main-sections {
-        flex-direction: column;
-        gap: 1.2rem;
-      }
-      .spotlights {
-        gap: 1rem;
-      }
-      .spotlight-card {
-        width: 100%;
-      }
+    .refresh-spotlights-btn:hover {
+      background: #bfa13a;
+      color: #fff;
     }
   </style>
 </head>
@@ -193,6 +109,15 @@
         <a href="join.html" class="cta-btn">Join the Chamber</a>
       </div>
     </section>
+
+    <!-- Search Members -->
+    <form class="search-form" id="searchForm" autocomplete="off" aria-label="Search Chamber Members">
+      <label for="searchInput">Search Chamber Members:</label>
+      <input type="text" id="searchInput" placeholder="Enter name, category, or address..." />
+      <button type="submit">Search</button>
+      <button type="button" id="clearSearchBtn">Clear</button>
+      <div class="search-results" id="searchResults"></div>
+    </form>
 
     <div class="main-sections">
       <!-- Events Section -->
@@ -230,6 +155,7 @@
           </div>
           <div class="forecast" id="forecast"></div>
         </div>
+        <button type="button" class="refresh-spotlights-btn" id="refreshWeatherBtn">Refresh Weather</button>
       </section>
     </div>
 
@@ -237,7 +163,16 @@
     <section aria-labelledby="spotlights-title">
       <h2 id="spotlights-title">Member Spotlights</h2>
       <div class="spotlights" id="spotlights"></div>
+      <button type="button" class="refresh-spotlights-btn" id="refreshSpotlightsBtn">Show Other Spotlights</button>
     </section>
+
+    <!-- Feedback Form -->
+    <form class="feedback-form" id="feedbackForm" autocomplete="off" aria-label="Send Feedback">
+      <label for="feedbackInput">We value your feedback! Let us know your thoughts:</label>
+      <textarea id="feedbackInput" required placeholder="Type your feedback here..."></textarea>
+      <button type="submit">Send Feedback</button>
+      <div id="feedbackMsg" style="margin-top:0.7rem;"></div>
+    </form>
   </main>
 
   <footer>
@@ -435,6 +370,77 @@
           });
         });
     }
+
+    // --- Interactivity additions below ---
+
+    // 1. Refresh Spotlights Button
+    document.getElementById('refreshSpotlightsBtn').addEventListener('click', renderSpotlights);
+
+    // 2. Refresh Weather Button
+    document.getElementById('refreshWeatherBtn').addEventListener('click', fetchWeather);
+
+    // 3. Feedback Form
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('feedbackInput').value.trim();
+      const msgDiv = document.getElementById('feedbackMsg');
+      if (feedback.length < 5) {
+        msgDiv.textContent = "Please enter more detailed feedback.";
+        msgDiv.style.color = "red";
+        return;
+      }
+      msgDiv.textContent = "Thank you for your feedback!";
+      msgDiv.style.color = "green";
+      document.getElementById('feedbackInput').value = '';
+      setTimeout(() => { msgDiv.textContent = ''; }, 4000);
+    });
+
+    // 4. Member Search
+    function renderSearchResults(results) {
+      const resultsDiv = document.getElementById('searchResults');
+      resultsDiv.innerHTML = '';
+      if (!results.length) {
+        resultsDiv.innerHTML = '<p>No members found.</p>';
+        return;
+      }
+      results.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'spotlight-card';
+        card.innerHTML = `
+          <span class="spotlight-level ${member.membership === 2 ? 'silver' : ''}">
+            ${member.membership === 3 ? 'Gold Member' : member.membership === 2 ? 'Silver Member' : 'Member'}
+          </span>
+          ${member.image ? `<img src="images/${member.image}" alt="${member.name} Logo">` : ''}
+          <h3>${member.name}</h3>
+          <p><strong>Category:</strong> ${member.category || 'N/A'}</p>
+          <p><strong>Address:</strong> ${member.address}</p>
+          <p><strong>Phone:</strong> ${member.phone}</p>
+          <p><strong>Website:</strong> <a href="${member.website}" target="_blank" rel="noopener">${member.website.replace(/^https?:\/\//, '')}</a></p>
+          ${member.info ? `<p>${member.info}</p>` : ''}
+        `;
+        resultsDiv.appendChild(card);
+      });
+    }
+
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!query) {
+        renderSearchResults([]);
+        return;
+      }
+      const results = membersData.filter(m =>
+        m.name.toLowerCase().includes(query) ||
+        (m.category && m.category.toLowerCase().includes(query)) ||
+        (m.address && m.address.toLowerCase().includes(query))
+      );
+      renderSearchResults(results);
+    });
+
+    document.getElementById('clearSearchBtn').addEventListener('click', function() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchResults').innerHTML = '';
+    });
 
     // Initial render
     renderSpotlights();
