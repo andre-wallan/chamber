@@ -16,7 +16,6 @@
   <meta property="og:type" content="website" />
   <style>
     /* ...existing styles... */
-    /* Add a little style for the feedback and search */
     .feedback-form, .search-form {
       margin: 1.5rem 0;
       background: #f7f7f7;
@@ -79,6 +78,71 @@
     .refresh-spotlights-btn:hover {
       background: #bfa13a;
       color: #fff;
+    }
+    .spotlight-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 1rem;
+      max-width: 500px;
+    }
+    .spotlight-card img {
+      max-width: 100px;
+      max-height: 60px;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .spotlight-level {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.95em;
+      background: gold;
+      color: #222;
+      margin-bottom: 0.5rem;
+    }
+    .spotlight-level.silver {
+      background: silver;
+      color: #222;
+    }
+    .forecast {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.7rem;
+    }
+    .forecast-day {
+      text-align: center;
+      background: #f8f8f8;
+      border-radius: 6px;
+      padding: 0.5rem;
+      min-width: 70px;
+    }
+    .weather-today {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 600px) {
+      .forecast {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .main-sections {
+        flex-direction: column;
+      }
+    }
+    .main-sections {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .main-sections > section {
+      flex: 1 1 300px;
+      min-width: 250px;
     }
   </style>
 </head>
@@ -289,15 +353,17 @@
       }
     ];
 
-    // Spotlights: 
+    // Spotlights: Show all eligible members, shuffle order
     function renderSpotlights() {
       const spotlightsDiv = document.getElementById('spotlights');
       spotlightsDiv.innerHTML = '';
       // Filter gold (3) and silver (2) members
       const eligible = membersData.filter(m => m.membership === 2 || m.membership === 3);
-      // Shuffle and pick 2 or 3
-      const count = Math.floor(Math.random() * 2) + 2; // 2 or 3
-      const shuffled = eligible.sort(() => 0.5 - Math.random()).slice(0, count);
+      // Shuffle and show all eligible spotlights
+      const shuffled = eligible
+        .map(m => ({ m, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ m }) => m);
       shuffled.forEach(member => {
         const card = document.createElement('div');
         card.className = 'spotlight-card';
@@ -335,12 +401,16 @@
           iconImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
           iconImg.alt = data.weather[0].description;
           iconImg.style.display = 'inline-block';
+        })
+        .catch(() => {
+          document.getElementById('weather-temp').textContent = '--°C';
+          document.getElementById('weather-desc').textContent = 'Weather unavailable';
+          document.getElementById('weather-icon').style.display = 'none';
         });
-      // 3-day forecast
+      // 5-day forecast (show all available days)
       fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${kabaleLat}&lon=${kabaleLon}&appid=${apiKey}&units=metric`)
         .then(res => res.json())
         .then(data => {
-          // Group by day
           const forecastDiv = document.getElementById('forecast');
           forecastDiv.innerHTML = '';
           const days = {};
@@ -350,14 +420,12 @@
             if (!days[day]) days[day] = [];
             days[day].push(item);
           });
-          // Get next 3 days (skip today)
+          // Show all forecast days (skip today)
           const today = new Date().toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
-          const dayNames = Object.keys(days).filter(d => d !== today).slice(0, 3);
+          const dayNames = Object.keys(days).filter(d => d !== today);
           dayNames.forEach(day => {
-            // Average temp for the day
             const temps = days[day].map(i => i.main.temp);
             const avgTemp = Math.round(temps.reduce((a, b) => a + b, 0) / temps.length);
-            // Use icon from midday if available
             let icon = days[day][Math.floor(days[day].length/2)].weather[0].icon;
             let desc = days[day][Math.floor(days[day].length/2)].weather[0].description;
             forecastDiv.innerHTML += `
@@ -368,6 +436,9 @@
               </div>
             `;
           });
+        })
+        .catch(() => {
+          document.getElementById('forecast').innerHTML = '<div>Forecast unavailable</div>';
         });
     }
 
@@ -384,8 +455,8 @@
       e.preventDefault();
       const feedback = document.getElementById('feedbackInput').value.trim();
       const msgDiv = document.getElementById('feedbackMsg');
-      if (feedback.length < 5) {
-        msgDiv.textContent = "Please enter more detailed feedback.";
+      if (feedback.length < 2) {
+        msgDiv.textContent = "Please enter your feedback.";
         msgDiv.style.color = "red";
         return;
       }
@@ -395,7 +466,7 @@
       setTimeout(() => { msgDiv.textContent = ''; }, 4000);
     });
 
-    // 4. Member Search
+    // 4. Member Search (search all fields, no result limit)
     function renderSearchResults(results) {
       const resultsDiv = document.getElementById('searchResults');
       resultsDiv.innerHTML = '';
@@ -430,9 +501,9 @@
         return;
       }
       const results = membersData.filter(m =>
-        m.name.toLowerCase().includes(query) ||
-        (m.category && m.category.toLowerCase().includes(query)) ||
-        (m.address && m.address.toLowerCase().includes(query))
+        Object.values(m).some(val =>
+          typeof val === 'string' && val.toLowerCase().includes(query)
+        )
       );
       renderSearchResults(results);
     });
