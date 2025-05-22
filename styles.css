@@ -1,7 +1,7 @@
 /* Hero Section */
 .hero {
   background: linear-gradient(120deg, #f5ebe0 70%, #d2b48c 100%);
-  color: #6f4e37;
+  color: #a59d97e3;
   padding: 80px 24px 56px 24px;
   text-align: center;
   border-radius: 0 0 32px 32px;
@@ -21,7 +21,7 @@
   right: -60px;
   width: 180px;
   height: 180px;
-  background: rgba(160, 82, 45, 0.08);
+  background: rgba(161, 95, 64, 0.08);
   border-radius: 50%;
   z-index: 0;
 }
@@ -38,7 +38,7 @@
 
 .hero p {
   font-size: 1.3rem;
-  color: #4e342e;
+  color: #a8786e;
   margin-bottom: 32px;
   position: relative;
   z-index: 1;
@@ -49,7 +49,7 @@
 
 /* Call to Action Button */
 .cta-btn {
-  background: linear-gradient(90deg, #a0522d 60%, #d2b48c 100%);
+  background: linear-gradient(90deg, #926f2d 60%, #d2b48c 100%);
   color: #fff8f0;
   border: none;
   padding: 16px 40px;
